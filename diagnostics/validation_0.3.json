@@ -1,0 +1,20 @@
+{
+  "automated_tests_passed": 58,
+  "viewer_tests_passed": 14,
+  "default_size": [
+    51,
+    301
+  ],
+  "default_axis_rgb": [
+    192,
+    192,
+    192
+  ],
+  "example_marker_opacities": [
+    0.6,
+    0.8
+  ],
+  "transparent_background_and_axis_pixel_checks": "passed",
+  "http_and_sse_reconnection": "passed",
+  "windows_native_fixedsys_and_obs_runtime": "not executed in Linux environment"
+}

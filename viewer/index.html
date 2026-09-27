@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sepan Viewer — OBS</title>
+<style>
+html,body { margin:0 !important; padding:0; background:transparent !important; overflow:hidden; }
+#overlay { position:absolute; top:0; left:0; width:51px; line-height:0; }
+svg { display:block; }
+</style>
+</head>
+<body>
+<div id="overlay"></div>
+<script>
+'use strict';
+const overlay = document.getElementById('overlay');
+const stream = new EventSource('/events');
+stream.onmessage = (event) => {
+  const state = JSON.parse(event.data);
+  overlay.style.height = `${state.height}px`;
+  overlay.innerHTML = state.svg;
+};
+// Reconnection receives a full snapshot, not a partial event history.
+stream.onerror = () => { overlay.replaceChildren(); };
+window.addEventListener('pagehide', () => stream.close());
+</script>
+</body>
+</html>
